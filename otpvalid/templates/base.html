@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrivePartner</title>
+    <link rel='stylesheet' href="/static/css/indexstyle.css/">
+    <link rel='stylesheet' href="/static/css/styles.css/">
+    <link rel='stylesheet' href="/static/css/signup.css/">
+    <link rel='stylesheet' href="/static/css/publishstyle.css">
+    <link rel='stylesheet' href="/static/css/aboutusstyles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-left">
+      <a class="logo">DrivePartner</a>
+  </div>
+  <div class="navbar-center">
+      <form method="GET">
+          <input type="text" placeholder="Search for rides..." name="search" class="search-bar">
+          <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+      </form>
+  </div>
+  <div class="navbar-right">
+      <a href="{% url 'publish_ride' %}" class="btn publish-btn">Publish Ride</a>
+      <div class="dropdown profile-dropdown">
+          <button class="dropbtn profile-btn">Profile</button>
+          <div class="dropdown-content">
+              <a href="{% url 'about' %}">About</a>
+              <a href="{% url 'account' %}">Account</a>
+          </div>
+      </div>
+      <div class="dropdown login-dropdown">
+          <button class="dropbtn login-btn">Login</button>
+          <div class="dropdown-content">
+              <a href="{% url 'Signup' %}">Sign Up</a>
+          </div>
+      </div>
+      <a href="{% url 'about_us' %}" class="btn about-us-btn">About Us</a>
+  </div>
+</nav>
+
+
+  
+    
+
+      
+      {% for message in messages %}  
+
+      <div class="alert alert-{{message.tags}}" role="alert" style="margin-top: 30px">
+        <h5>{{message}}</h5>
+      </div>
+        
+      {% endfor %}
+        
+
+      
+      {% block content %}
+
+      
+        
+      {% endblock content %}
+
+      {% if messages %}
+    <ul>
+        {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}  
+
+      <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h1>Top carpool routes</h1>
+                <ul>
+                    <li>Delhi → Chandigarh</li>
+                    <li>Mumbai → Pune</li>
+                    <li>Kanpur → Lucknow</li>
+                    <li>Bengaluru → Chennai</li>
+                    <li>Pune → Mumbai</li>
+    
+    
+                    <li><a href="#">All carpool routes</a></li>
+                    <li><a href="#">All carpool destinations</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h1>About</h1>
+                <ul>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Help Centre</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">We're Hiring!</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h1>Language</h1>
+                <button class="language-btn">English (India)</button>
+            </div>
+    
+            <div class="footer-section">
+                <h1>Connect with us</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon facebook"></a>
+                    <a href="#" class="icon twitter"></a>
+                    <a href="#" class="icon youtube"></a>
+                    <a href="#" class="icon instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>©Driver Partner , Carpooling Service, 2024. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

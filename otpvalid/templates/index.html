@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gW9aZbQs35YXOCdPYOPweb6-o3JENuc&libraries=places"></script>
+<style>
+    .input-container {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="hero-section">
+    <div class="hero-msg">
+        <form method="POST" action="{% url 'find_your_ride' %}">
+            {% csrf_token %}
+            <div class="container">
+                <div class="form-container">
+                    <h1>Find Your Ride</h1>
+
+                    <!-- Leaving From (Pickup Location) -->
+                    <div class="input-group">
+                        <label for="pickup-location">Leaving From</label>
+                        <input type="text" id="pickup-location" placeholder="Enter Pickup Location" required>
+                    </div>
+
+                    <!-- Where To (Drop Location) -->
+                    <div class="input-group">
+                        <label for="drop-location">Where To</label>
+                        <input type="text" id="drop-location" placeholder="Enter Drop Location" required>
+                    </div>
+
+                    <!-- Date and Time -->
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" required>
+                        </div>
+                    </div>
+
+                    <!-- Select Passengers -->
+                    <div class="input-group">
+                        <label for="passengers">Select Passengers</label>
+                        <select id="passengers" required>
+                            <option value="" disabled selected>Select Passengers</option>
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                            <option value="6">6 Passengers</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" href="{% url 'login' %}?next={% url 'find_your_ride' %}">Find Your Ride</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Display results -->
+        <div id="results">No rides found.</div>
+    </div>
+</div>
+
+<!-- Autocomplete JavaScript -->
+<script>
+    function initAutocomplete() {
+        // Initialize Google Autocomplete for pickup and drop locations
+        var pickupInput = document.getElementById('pickup-location');
+        var dropInput = document.getElementById('drop-location');
+
+        // Enable Google Places Autocomplete with restrictions to cities
+        var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, { types: ['(cities)'] });
+        var dropAutocomplete = new google.maps.places.Autocomplete(dropInput, { types: ['(cities)'] });
+
+        // Restrict results to place names and geometry information
+        pickupAutocomplete.setFields(['address_components', 'geometry', 'name']);
+        dropAutocomplete.setFields(['address_components', 'geometry', 'name']);
+    }
+
+    // Initialize the autocomplete feature on page load
+    google.maps.event.addDomListener(window, 'load', initAutocomplete);
+</script>
+
+
+
+                    {% if rides %}
+                    <h3>Available Rides:</h3>
+                    <ul>
+                        {% for ride in rides %}
+                            <li>{{ ride.pickup_location }} to {{ ride.drop_location }} on {{ ride.date }} at {{ ride.time }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No rides found.</p>
+                {% endif %}
+                </form>
+            </div>
+        </div>
+    </form>
+    </div>
+</div> 
+<!-- Information section -->
+<section class="features">
+    <div class="feature-box">
+        <div class="icon">
+            <!-- You can add an icon here -->
+            <img src="/static/image/Emoji-1.png" alt="Icon for low prices">
+        </div>
+        <h3>Choose from a variety of rides at affordable prices</h3>
+        <p>
+            Whether you're traveling by carpool, discover the ideal ride from our extensive selection of destinations and routes, all at affordable prices</p>
+    </div>
+
+    <div class="feature-box">
+        <div class="icon">
+            <!-- You can add an icon here -->
+            <img src="/static/image/emoji-2.png" alt="Icon for trust">
+        </div>
+        <h3>Have confidence in the people you travel with.</h3>
+        <p>
+            We verify reviews, profiles, and IDs of our members and bus partners, so you can trust who you're traveling with and book confidently on our secure platform.</p>
+    </div>
+
+    <div class="feature-box">
+        <div class="icon">
+            <!-- You can add an icon here -->
+            <img src="/static/image/emoji-3.png" alt="Icon for easy booking">
+        </div>
+        <h3>Swipe, select, tap, and you're off!</h3>
+        <p>Booking a ride has never been simpler! With our user-friendly app and advanced technology, you can secure a ride near you in just a few minutes.</p>
+    </div>
+</section> 
+
+<!-- 2 info section  -->
+
+<div class="container">
+    <div class="text-section">
+        <h1>Who Can Benefit from Carpooling?</h1>
+        <p>
+            Carpooling is a convenient and eco-friendly transportation solution for individuals
+            looking to make their daily commute or business trips more efficient. This service is
+            designed to cater to commuters and frequent travelers, offering a seamless, automated
+            experience that pairs passengers and drivers perfectly. It's a smart choice for anyone
+            seeking to reduce travel costs, minimize environmental impact, and enjoy an effortless
+            ride-sharing experience.
+        </p>
+    </div>
+    <div class="image-section">
+        <img src="/static/image/2-info image.jpg" alt="Carpooling Image">
+    </div>
+</div>
+
+<!-- 3 info sections -->
+
+<section class="carpooling-safety">
+    <div class="container">
+        <div class="left-content">
+            <img src="/static/image/3-info.avif" alt="Carpooling Safety">
+        </div>
+        <div class="right-content">
+            <h1>Help us keep your carpooling experience safe</h1>
+            <p>At our carpooling service, we are committed to providing you with a secure and smooth ride-sharing experience. While rare, scams can occur, and we want to ensure you are aware of how to identify and avoid potential issues. By following a few simple tips, you can help us maintain a safe carpooling community.</p>
+            <button class="learn-more-btn">Learn more</button>
+        </div>
+    </div>
+</section>
+
+    
+{% endblock content %}
+    
+

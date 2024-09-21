@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ride Details</h1>
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
+        <h3>From: {{ ride.start_location }}</h3>
+        <p>To: {{ ride.end_location }}</p>
+        <p>Date: {{ ride.date }}</p>
+        <p>Price: ₹{{ ride.price }}</p>
+        <p>Experience: {{ ride.experience }}</p>
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <strong>Pickup Time</strong>
+                <p>{{ ride.pickup_time }}</p>
+            </div>
+            <div>
+                <strong>Drop Time</strong>
+                <p>{{ ride.drop_time }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

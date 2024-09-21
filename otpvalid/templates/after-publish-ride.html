@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/after-publish-ride.css">
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="ride-details-container">
+        <!-- Header -->
+        <header>
+            <h1>Ride Details</h1>
+        </header>
+
+        <!-- Pickup and Drop-off Section -->
+        <section class="location-section">
+            <div class="location">
+                <h2>Pickup Location :- </h2>
+                <h3>Pune</h3>
+            </div>
+            <div class="location">
+                <h2>Drop-off Location :- </h2>
+                <h3>Sangamner</h3>
+            </div>
+        </section>
+
+        <!-- Price Section -->
+        <section class="price-section">
+            <div class="price-card">
+                <h1>Price :-  <span>400</span></h1>
+            </div>
+        </section>
+
+        <!-- Publisher Info Section -->
+        <section class="publisher-info-section">
+            <div class="publisher-info">
+                <img src="/driving/static/image/My-self.jpg" alt="Publisher Photo" class="publisher-photo">
+                <div class="publisher-details">
+                    <h3>Vaibhav Gite</h3>
+                    <p>Experienced carpool driver</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Driver Section -->
+        <section class="about-driver-section">
+            <h1>About the Driver</h1>
+            <div class="driver-info">
+                <h2>Bio:</h2>
+                <h3>Vaibhav has over 5 years of carpooling experience. He enjoys helping others and providing a safe journey.</h3>
+
+                <h2>Vehicle:</h2>
+                <h3>Scorpio N</h3>
+
+                <h2>Experience:</h2>
+                <h3>5 years of driving experience.</3>
+
+                <h2>Restrictions:</h2>
+                <h3>No smoking, no pets.</h3>
+            </div>
+        </section>
+    </div>
+</form>
+{% endblock %}

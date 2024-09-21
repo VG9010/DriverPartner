@@ -1,0 +1,42 @@
+<h1>Available Rides</h1>
+<form method="post" action="{% url 'available_rides' %}">
+    {% csrf_token %}
+
+    {% if rides %}
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            {% for ride in rides %}
+                <div style="border: 1px solid #ccc; padding: 20px; border-radius: 10px; width: 300px; background-color: #f9f9f9; position: relative;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <!-- Assuming you have a Profile model related to the user -->
+                        <img src="{{ ride.publisher.profile.profile_photo.url }}" alt="{{ ride.publisher.username }}'s Profile" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                        <div>
+                            <strong>{{ ride.publisher.profile.name }}</strong>
+                            <br>
+                            <small>Rating: 4.7/5 | {{ ride.publisher.profile.experience }} rides</small>
+                        </div>
+                    </div>
+
+                    <h3>From: <strong style="color: #4CAF50;">{{ ride.start_location }}</strong></h3>
+                    <p>To: <strong style="color: #4CAF50;">{{ ride.end_location }}</strong></p>
+                    <p>Date: {{ ride.date|date:"d M Y" }}</p>
+                    <p style="font-size: 1.5em; color: #4CAF50;">₹{{ ride.price }}</p>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <div>
+                            <strong>Pickup Time</strong>
+                            <p>{{ ride.pickup_time|time:"g:i A" }}</p>
+                        </div>
+                        <div>
+                            <strong>Drop Time</strong>
+                            <p>{{ ride.drop_time|time:"g:i A" }}</p>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'ride_detail' ride.id %}" style="display: inline-block; text-align: center; background-color: #4CAF50; color: white; padding: 10px; margin-top: 10px; border-radius: 5px; text-decoration: none; width: 100%;">Book Now</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No rides available.</p>
+    {% endif %}
+</form>

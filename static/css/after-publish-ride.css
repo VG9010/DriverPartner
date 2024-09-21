@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f4f8fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.ride-details-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    margin: 20px;
+}
+
+header {
+    text-align: center;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 0;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0;
+    
+}
+
+h2 {
+    font-size: 22px;
+    color: #28a745;
+    margin-bottom: 5px;
+}
+h3{
+    color: black;
+    font-size: 20px;
+}
+h4 {
+    color: black;
+    font-size: 22px;
+}
+
+
+/* Location Section */
+.location-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.location {
+    width: 45%;
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #28a745;
+}
+
+.location p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Price Section */
+.price-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.price-card {
+    background-color: #28a745;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.price-card h2 span {
+    font-size: 28px;
+}
+
+/* Publisher Info */
+.publisher-info-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.publisher-info {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.publisher-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+
+.publisher-details h3 {
+    font-size: 20px;
+    margin: 0;
+    color: #28a745;
+}
+
+.publisher-details p {
+    font-size: 16px;
+    margin: 5px 0 0;
+    color: #555;
+}
+
+/* About Driver */
+.about-driver-section {
+    margin-top: 20px;
+}
+
+.driver-info {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.driver-info p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .location-section {
+        flex-direction: column;
+    }
+
+    .location {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .publisher-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .publisher-photo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+}

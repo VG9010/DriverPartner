@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Partner</title>
+    <link rel="stylesheet" href="/auth/static/css/indexstyle.css">
+   
+</head>
+
+<header>   
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/image/Main Logo.png" alt="DrivePartner">
+        </div>
+        <div class="search-bar" >
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="actions">
+            <button class="publish-ride">Publish Ride</button>
+            <div class="profile">
+                <button class="profile-button">Profile</button>
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <a href="#">Account</a>
+                 
+                </div>
+            </div>
+
+            <div class="Login">
+                <button class="login-button">Login</button>
+                <div class="dropdown">
+                    <a href="#">SignUp</a>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+</header>
+<section>
+    <form class="ride-form" method="POST" action="{% url 'find_ride' %}">
+           {% csrf_token %}
+        <div class="container">
+            <div class="form-container">
+            <h1>Find Your Ride</h1>
+            <div>
+                <label for="id_pickup_location">Pickup Location:</label>
+                <input type="text" id="id_pickup_location" name="pickup_location" value="{{ form.pickup_location.value }}">
+                {% if form.pickup_location.errors %}
+                    <div style="color: red;">
+                        {{ form.pickup_location.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div>
+                <label for="id_drop_location">Drop Location:</label>
+                <input type="text" id="id_drop_location" name="drop_location" value="{{ form.drop_location.value }}">
+                {% if form.drop_location.errors %}
+                    <div style="color: red;">
+                        {{ form.drop_location.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="ride_date" required>
+                </div>
+                <div class="input-group">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" name="ride_time" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="passengers">Select Passengers</label>
+                <select id="passengers" name="passengers" required>
+                    <option value="" disabled selected>Select Passengers</option>
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                    <option value="5">5 Passengers</option>
+                    <option value="6">6 Passengers</option>
+                </select>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+            <button type="submit" href="{ url 'available_rides'}">Find Your Ride</button>
+            {% comment %} {{form.as_p}} {% endcomment %}
+            </form>
+    </form>
+    </div>
+</div>
+</section>
+
+
+</body>
+</html>
+

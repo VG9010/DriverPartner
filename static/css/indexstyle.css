@@ -1,0 +1,595 @@
+.navbar {
+    background-color: #4CAF50;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.navbar-left {
+    flex: 1;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-center {
+    flex: 2;
+}
+
+.search-bar {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem 0 0 0.25rem;
+    width: 70%;
+}
+
+.search-btn {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.publish-btn {
+    background-color: #3e8e41;
+}
+
+.publish-btn:hover {
+    background-color: #2f6f31;
+}
+
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+
+.profile-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.login-dropdown {
+    position: relative;
+}
+
+.login-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.about-us-btn {
+    background-color: #3e8e41;
+}
+
+.about-us-btn:hover {
+    background-color: #2f6f31;
+}
+
+
+
+
+/* Hero Section  */
+.hero-section{
+    background-image: url(/static/image/main-hero.jpg);
+    background-size: cover;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+.hero-msg a{
+    color: #007185;
+}
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+}
+
+/* Form Container Styling */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.form-container {
+   
+    position: absolute;
+    top: 60%;
+    left: 3%; 
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 300px;
+}
+
+.form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.ride-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #555;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+/* Button Styles */
+.ride-form button {
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ride-form button:hover {
+    background-color: #218838;
+}
+
+
+
+/* 1 Info Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px auto;
+    max-width: 1500px;
+}
+
+.feature-box {
+    text-align: center;
+    max-width: 600px;
+    
+}
+
+.icon img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #005f73;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #616161;
+    line-height: 1.5;
+}
+
+/* 2 info section */
+.carpooling-benefits {
+    background-color: #c3d2c2;   
+    text-align: center;
+}
+
+.container {
+    max-width:fit-content;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #77bf87;
+    
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.image-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-container img {
+    max-width: fit-content;
+    height: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .image-container img {
+        max-width: 100%;
+    }
+}
+/* 2 info section chatgpt  */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 80%;
+    max-width: 1000px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.text-section {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: slideIn 1.5s ease-out;
+}
+
+.text-section h1 {
+    color: #69b06b;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.text-section p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.image-section {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1.5s ease-out;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+/* 3 info section help us */
+.carpooling-safety {
+    background-color: #218838;
+    padding: 50px 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.left-content img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.right-content {
+    max-width: 600px;
+    color: white;
+}
+
+.right-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.right-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.learn-more-btn {
+    background-color: white;
+    color: #28a745;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.learn-more-btn:hover {
+    background-color: #f0f7f8;
+}
+
+@media (max-width: 50px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-content {
+        margin-bottom: 20px;
+    }
+
+    .right-content h1 {
+        font-size: 2em;
+    }
+}
+
+/* footer section */
+footer {
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+    color: #333;
+    font-size: 16px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.footer-section ul li a:hover {
+    color: #4CAF50;
+}
+
+.language-btn {
+    background-color: white;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.language-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.facebook {
+    background-color: #218838;
+    background-image: url('/static/image/facebook.png');
+}
+
+.twitter {
+    background-color: #218838;
+    background-image: url('/static/image/twitter.png');
+}
+
+.youtube {
+    background-color: #218838;
+    background-image: url('/static/image/youtube.png');
+}
+
+.instagram {
+    background-color: #218838;
+    background-image: url('/static/image/instagram.png');
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #e0e0e0;
+    color: #666;
+}
+
+
+
+
+
+
+/* ride details */
+
+
+h1 {
+    color: #4CAF50;
+}
+
+.ride-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ride-card:hover {
+    background-color: #f0f0f0;
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px;
+}

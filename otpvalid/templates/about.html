@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link rel="stylesheet" href="/static/css/Aboutstyle.css">
+
+
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-info">
+                <form method="POST" enctype="multipart/form-data" id="profile-form">
+                    {% csrf_token %}
+                    <label for="photo-input" class="photo-upload-label">
+                        <img id="profile-photo" src="default-user.png" alt="User Photo">
+                    </label>
+                    <input type="file" id="photo-input" name="profile_picture" accept="image/*">
+                
+                <input type="text" id="user-name" value="Irakli Talavadze">
+                
+            </div>
+            <nav>
+                <ul>
+                    <li class="active">Personal information</li>
+                    <li class="active">Account</li>
+                    <li class="active">About Us</li>
+                    
+                </ul>
+            </nav>
+        </form>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <form method="POST">
+                    {% csrf_token %}
+                <h2>Personal information</h2>
+                <button class="sign-out">Sign out</button>
+            </header>
+            <p>Manage your personal information, including phone numbers and email address where you can be contacted.</p>
+            <div class="info-cards">
+                <div class="info-card">
+                    <h4>Name</h4>
+                    <input type="text" id="edit-name" value="Irakli Talavadze">
+                </div>
+                <div class="info-card">
+                    <h4>Date of Birth</h4>
+                    <input type="date" id="edit-dob" value="1993-07-07">
+                </div>
+                <div class="info-card">
+                    <h4>Country/Region</h4>
+                    <input type="text" id="edit-country" value="Georgia, Tbilisi">
+                </div>
+                <div class="info-card">
+                    <h4>Language</h4>
+                    <input type="text" id="edit-language" value="English (UK) - English">
+                </div>
+                <div class="info-card full-width">
+                    <h4>Email-Id</h4>
+                    <input type="email" id="edit-email" value="ikakodesign@gmail.com">
+                </div>
+            </div>
+            <button class="save-button">Save Changes</button>
+        </form>
+        </div>
+    </div>
+
+    <script >
+         // Preview the uploaded image
+    document.getElementById('photo-input').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function (e) {
+            document.getElementById('profile-photo').src = e.target.result;
+        };
+        
+        reader.readAsDataURL(file);
+    });
+
+    // Handle form submission via AJAX
+    document.querySelector('.save-button').addEventListener('click', function (event) {
+        event.preventDefault();  // Prevent form submission
+
+        const formData = new FormData(document.getElementById('profile-form'));
+
+        // Use fetch to submit the form data
+        fetch('/save-profile', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert('Changes saved successfully!');
+            } else {
+                alert('Failed to save changes.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error saving changes.');
+        });
+    });
+        document.querySelector('.save-button').addEventListener('click', function () {
+            const name = document.getElementById('edit-name').value;
+            const dob = document.getElementById('edit-dob').value;
+            const country = document.getElementById('edit-country').value;
+            const language = document.getElementById('edit-language').value;
+            const email = document.getElementById('edit-email').value;
+        
+            // Update the sidebar
+            document.getElementById('user-name').value = name;
+            document.getElementById('user-email').textContent = email;
+        
+            // Data to be sent to the backend
+            const data = {
+                name: name,
+                dob: dob,
+                country: country,
+                language: language,
+                email: email
+            };
+        
+            // AJAX request to send data to the backend
+            fetch('/save-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Changes saved successfully!');
+                } else {
+                    alert('Error saving changes.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to save changes.');
+            });
+        });
+        
+
+      // Handle profile photo upload and preview
+document.getElementById('photo-input').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function (e) {
+        document.getElementById('profile-photo').src = e.target.result;
+    };
+    
+    reader.readAsDataURL(file);
+});
+
+// Handle saving changes
+document.querySelector('.save-button').addEventListener('click', function () {
+    // Get values from input fields
+    const name = document.getElementById('edit-name').value;
+    const dob = document.getElementById('edit-dob').value;
+    const country = document.getElementById('edit-country').value;
+    const language = document.getElementById('edit-language').value;
+    const email = document.getElementById('edit-email').value;
+
+    // Update the sidebar name and email
+    document.getElementById('user-name').value = name;
+    document.getElementById('user-email').textContent = email;
+
+    // Optionally: You can save this data to a database or send it to a server
+    // using AJAX or fetch if your application requires persistent data.
+    
+    alert('Changes saved!');
+});
+
+    </script>
+    {% endblock %}

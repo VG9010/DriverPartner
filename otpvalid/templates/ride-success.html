@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Ride Published</title>
+</head>
+<body>
+    <h2>Your ride has been published successfully!</h2>
+    <a href="{% url 'publish_ride' %}">Publish another ride</a>
+
+{% endblock %}

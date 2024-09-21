@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn0hcMWjb3SEhSfKzZaVbEStjwlErV6QE&libraries=places&callback=initMap" async defer></script>
+
+<body  onload="initMap()">
+    <h3>Google Maps Test</h3>
+ 
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    
+    <div class="publish-ride-container">
+        <h2>Publish Your Ride</h2>
+    
+        <form class="publish-ride-form" method="POST" action="{% url 'publish_ride' %}">
+            {% csrf_token %}
+            
+            <!-- Pickup Location -->
+            <div class="input-group">
+                <label for="pickup-location">Pickup Location</label>
+                <input type="text" id="pickup-location" name="pickup-location" placeholder="Enter Pickup Location" required>
+            </div>
+    
+            <!-- Drop Location -->
+            <div class="input-group">
+                <label for="drop-location">Drop Location</label>
+                <input type="text" id="drop-location" name="drop-location" placeholder="Enter Drop Location" required>
+            </div>
+    
+           
+    
+            <!-- Pickup and Drop Times -->
+            <div class="input-group time-group">
+                <div>
+                    <label for="pickup-time">Pickup Time</label>
+                    <input type="time" id="pickup-time" name="pickup-time" required>
+                </div>
+                <div>
+                    <label for="drop-time">Drop Time</label>
+                    <input type="time" id="drop-time" name="drop-time" required>
+                </div>
+            </div>
+    
+            <!-- Price -->
+            <div class="input-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" placeholder="Enter Price" required>
+            </div>
+    
+            <button href="{% url 'available_rides' %}" type="submit" class="submit-btn">Publish Ride</button>
+            {% if messages %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </form>
+    
+    </div>
+     <!-- Hidden fields for latitude and longitude -->
+     <input type="hidden" id="pickup_lat" name="pickup_lat">
+     <input type="hidden" id="pickup_lng" name="pickup_lng">
+     <input type="hidden" id="dropoff_lat" name="dropoff_lat">
+     <input type="hidden" id="dropoff_lng" name="dropoff_lng">
+
+     <!-- Google Maps Div -->
+     <div id="map" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+    
+    <!-- Google Maps API and JavaScript -->
+    <script async
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gW9aZbQs35YXOCdPYOPweb6-o3JENuc&libraries=places&callback=initMap" ></script>
+    <script>
+        function initMap() {
+            // Initialize map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 19.0760, lng: 72.8777}, // Default location (Mumbai)
+                zoom: 8
+            });
+    
+            // Autocomplete for Pickup Location
+            var pickupInput = document.getElementById('pickup-location');
+            var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+            pickupAutocomplete.bindTo('bounds', map);
+    
+            // Set pickup location on map and get lat/lng
+            pickupAutocomplete.addListener('place_changed', function () {
+                var place = pickupAutocomplete.getPlace();
+                if (!place.geometry) {
+                    alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+    
+                // Set pickup location coordinates
+                document.getElementById('pickup_lat').value = place.geometry.location.lat();
+                document.getElementById('pickup_lng').value = place.geometry.location.lng();
+    
+                map.setCenter(place.geometry.location);
+                map.setZoom(14); // Zoom in when a location is selected
+            });
+    
+            // Autocomplete for Drop Location
+            var dropoffInput = document.getElementById('drop-location');
+            var dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+            dropoffAutocomplete.bindTo('bounds', map);
+    
+            // Set drop location on map and get lat/lng
+            dropoffAutocomplete.addListener('place_changed', function () {
+                var place = dropoffAutocomplete.getPlace();
+                if (!place.geometry) {
+                    alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+    
+                // Set dropoff location coordinates
+                document.getElementById('dropoff_lat').value = place.geometry.location.lat();
+                document.getElementById('dropoff_lng').value = place.geometry.location.lng();
+    
+                map.setCenter(place.geometry.location);
+                map.setZoom(14); // Zoom in when a location is selected
+            });
+        }
+    </script>
+    
+
+    {% endblock content %}

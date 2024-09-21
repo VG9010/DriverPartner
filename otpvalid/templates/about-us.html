@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<section>
+
+    <form method="POST">
+        {% csrf_token%}
+    <div class="about-container">
+        <header class="about-header">
+            <div class="container">
+                <div class="image">
+                    <img src="/static/image/about-us 1.jpg" alt="Driving Partner">
+                </div>
+                <div class="content">
+                    <h1>About Us</h1>
+                    <h2>Driving Partner - Making Carpooling Easy and Sustainable</h2>
+                    <p>At <strong>Driving Partner</strong>, we believe in creating a more connected and sustainable world, one ride at a time. We’re a platform designed to connect people who are traveling the same route, making carpooling a breeze.</p>
+                </div>
+            </div>
+
+            <div class="containers">  
+                <h1>Forget about surplus charges</h1>  
+                <p class="main-description">Short description goes here that very briefly defines what this platform is and it can make your life easy.</p>  
+               
+                <div class="features">  
+                 <div class="feature">  
+                  <img src="/static/image/about-us 1.jpg" alt="Easy to use">  
+                  <h2>Simple</h2>  
+                  <p>Our platform is designed to be intuitive and easy to use. Whether you're a driver looking to share your ride or a passenger seeking a convenient and affordable way to travel, we make it simple to find your perfect match.</p>  
+                 </div>  
+                 <div class="feature">  
+                   <img src="/static/image/about-us 22.jpg" alt="Safe to use">  
+                  <h2>Safety First</h2>  
+                  <p>We prioritize the safety of our users. Our platform includes features like verified profiles, real-time tracking, and communication tools to ensure a secure and comfortable experience.</p>  
+                 </div>  
+                 <div class="feature">  
+                  <img src="/static/image/about-us 3.jpg" alt="Reliable service">  
+                  <h2>Sustainable and Affordable</h2>  
+                  <p>Carpooling is a greener and more economical way to travel. By reducing traffic congestion and fuel consumption, we contribute to a cleaner environment and help you save money on your journeys.</p>  
+                 </div>  
+                </div>  
+              </div>
+              
+        <section class="mission-statement">
+            <h3>Our mission:</h3>
+            <p>To revolutionize the way people travel by making carpooling accessible, convenient, and rewarding for everyone.</p>
+        </section>
+
+        <section class="call-to-action">
+            <h3>Join us today and be a part of the carpooling revolution!</h3>
+            <a href="#" class="cta-button">Sign Up Now</a>
+            <p>Share the Love: Tell your friends and family about <strong>Driving Partner</strong> and encourage them to join the carpooling community.</p>
+        </section>
+
+        <section class="optional-sections">
+            <div class="our-team">
+                <h3>Our Team</h3>
+                <div class="team-member">
+                    <img src="/static/image/My-self.jpg" alt="Team Member Name" class="team-photo">
+                    <p><strong>Vaibhav Gite</strong></p>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/image/My-self.jpg" alt="Team Member Name" class="team-photo">
+                    <p><strong>vaibhav Gite</strong></p>
+                    <p>Chief Technology Officer</p>
+                </div>
+            </div>
+
+            <div class="our-values">
+                
+                <h3>Our Values</h3>
+                <p>We are driven by our core values: sustainability, community, innovation, and customer satisfaction.</p>
+                <div class="image">
+                    <img src="/static/image/Our-values-about-us.png" alt="Driving Partner">
+                </div>
+            </div>
+
+            <div class="awards-recognition">
+                <h3>Awards & Recognition</h3>
+                <p>We are proud to have been recognized for our impact and contributions to the carpooling industry.</p>
+            </div>
+
+            <div class="blog-news">
+                <h3>Blog or News</h3>
+                <p>Visit our <a href="#">blog</a> to read relevant insights, tips, and updates related to carpooling.</p>
+            </div>
+
+            <div class="social-media">
+                <h3>Connect with us on Social Media</h3>
+                <p>Follow us on:</p>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+    </div> 
+</form>
+</section>
+{% endblock content %}

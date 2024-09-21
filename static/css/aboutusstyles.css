@@ -1,0 +1,200 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4,#f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h1 {
+    font-size: 36px;
+    color: #2c3e50;
+}
+
+.about-header h2 {
+    font-size: 24px;
+    color: #16a085;
+}
+
+.intro-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.content {
+    flex: 1;
+    padding-right: 20px;
+}
+.content h1 {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.content h2 {
+    color: #2c3e50;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.content p {
+    font-size: 16px;
+    color: #555;
+}
+.image {
+    flex: 1;
+    text-align: left;
+}
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.unique-features h3,
+.mission-statement h3,
+.call-to-action h3,
+.optional-sections h3 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.unique-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+}
+
+.unique-features ul li {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.mission-statement p,
+.call-to-action p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #16a085;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.optional-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.optional-sections div {
+    flex: 1 1 calc(33.333% - 40px);
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.team-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-value img  {
+    width:200%;
+    height: 400px;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.social-media ul li {
+    margin: 0 10px;
+}
+
+.social-media ul li a {
+    color: #2c3e50;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.containers {  
+    font-family: Arial, sans-serif;  
+    max-width: 1000px;  
+    margin: 0 auto;  
+    text-align: center;  
+  }  
+    
+  h1 {  
+    color: #2ecc71;  
+    font-size: 2.5em;  
+  }  
+    
+  .main-description {  
+    color: #7f8c8d;  
+    margin-bottom: 30px;  
+  }  
+    
+  .features {  
+    display: flex;  
+    justify-content: space-between;  
+  }  
+    
+  .feature {  
+    flex-basis: 30%;  
+  }  
+    
+  .feature img {  
+    max-width: 100%;  
+    height: auto;  
+  }  
+    
+  .feature h2 {  
+    color: #34495e;  
+  }  
+    
+  .feature p {  
+    color: #7f8c8d;  
+    font-size: 1.1em;  
+  }

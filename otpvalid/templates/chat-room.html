@@ -1,0 +1,73 @@
+<h2>Chat with {{ room.driver.username if room.driver != user else room.passenger.username }}</h2>
+
+<div id="chat-log" class="messages">
+    {% for message in messages %}
+        <div class="{% if message.sender == user %}sent-message{% else %}received-message{% endif %}">
+            <strong>{{ message.sender.username }}:</strong> {{ message.content }} <em>{{ message.timestamp }}</em>
+        </div>
+    {% endfor %}
+</div>
+
+<form id="chat-message-form">
+    <input type="text" id="chat-message-input" autocomplete="off" placeholder="Type your message here..." />
+    <button type="button" id="chat-message-submit">Send</button>
+</form>
+
+<script>
+    const roomID = "{{ room.id }}";
+    const user = "{{ user.username }}";
+    const chatSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/chat/' + roomID + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const message = data.message;
+        const sender = data.sender;
+        const messageLog = document.getElementById('chat-log');
+
+        const newMessage = document.createElement('div');
+        newMessage.className = (sender === user) ? 'sent-message' : 'received-message';
+        newMessage.innerHTML = `<strong>${sender}:</strong> ${message}`;
+
+        messageLog.appendChild(newMessage);
+        messageLog.scrollTop = messageLog.scrollHeight;
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.getElementById('chat-message-submit').onclick = function(e) {
+        const messageInputDom = document.getElementById('chat-message-input');
+        const message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+        messageInputDom.value = '';
+    };
+</script>
+
+<style>
+    .messages {
+        max-height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .sent-message {
+        text-align: right;
+        background-color: #dcf8c6;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+    .received-message {
+        text-align: left;
+        background-color: #ebebeb;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+</style>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/driving/static/css/indexstyle.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form-container">
+            <h1>Find Your Ride</h1>
+            {% csrf_token %}
+            <form class="ride-form">
+                <div class="input-group">
+                    <label for="pickup-location">Pickup Location</label>
+                    <input type="text" id="pickup-location" placeholder="Enter Pickup Location" required>
+                </div>
+                <div class="input-group">
+                    <label for="drop-location">Drop Location</label>
+                    <input type="text" id="drop-location" placeholder="Enter Drop Location" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="passengers">Select Passengers</label>
+                    <select id="passengers" required>
+                        <option value="" disabled selected>Select Passengers</option>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                        <option value="6">6 Passengers</option>
+                    </select>
+                </div>
+                <button type="submit">Find Your Ride</button>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
