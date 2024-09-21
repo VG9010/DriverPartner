@@ -1,0 +1,74 @@
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.signup-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #23af98;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #23af98;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-button:hover {
+    background-color: #1d937e;
+}
+
+.extra-options {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.extra-options a {
+    color: #23af98;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.extra-options a:hover {
+    text-decoration: underline;
+}
+
+#passwordMatchMessage {
+    font-size: 12px;
+    margin-top: 5px;
+} 
+
